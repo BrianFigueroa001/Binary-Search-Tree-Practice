@@ -62,7 +62,7 @@ public class BinaryTree {
         }    
     }
 
-    public void delete(int valueToDelete, BinaryNode node) {  //Part 1: Check if tree is empty
+    public void delete(int valueToDelete) {  //Part 1: Check if tree is empty
         if (root == null){
             System.out.print("Tree is empty.");
         }
