@@ -71,7 +71,7 @@ public class BinaryTree {
         }
     }
     
-    public BinaryNode del(int valueToDelete, BinaryNode currentNode){ //Part 2: Recursively find node to delete.
+    private BinaryNode del(int valueToDelete, BinaryNode currentNode){ //Part 2: Recursively find node to delete.
         //Recursively traverses left/right subtree if the deletion value is less/greater than the currentNode's value
         if (valueToDelete < currentNode.getValue()){
             currentNode.setLeft(del(valueToDelete, currentNode.getLeft()));
@@ -93,10 +93,22 @@ public class BinaryTree {
             }
             //If currentNode has 2 children
             else {
-                //ToDo
+                //Set current node's value to its in order successor (the next smallest node in its right subtree);
+                currentNode.setValue(inOrderSuccessor(currentNode.getRight()));
+                //delete duplicate node
+                currentNode.setRight(del(currentNode.getValue(), currentNode.getRight()));
             }
         }
         return currentNode;
+    }
+    
+    private int inOrderSuccessor(BinaryNode node){
+        int minimunValue = node.getValue();
+        while (node.getLeft() != null){
+            minimunValue = node.getLeft().getValue();
+            node = node.getLeft();
+        }
+        return minimunValue;
     }
     
     public void printInOrder(){
