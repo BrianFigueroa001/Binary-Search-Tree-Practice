@@ -4,11 +4,14 @@ public class BinaryTree {
 
     private BinaryNode root;
 
+    public BinaryNode getRoot(){
+        return root;
+    }
     public void setRoot(BinaryNode root) {
         this.root = root;
     }
 
-    public BinaryNode find(int valueToFind) {
+    public BinaryNode find(int valueToFind) { //iterative search
         BinaryNode tempNode = root;
         
         while (tempNode.getValue() != valueToFind) {
@@ -28,6 +31,7 @@ public class BinaryTree {
         if (tempNode.getValue() == valueToFind) {
             return tempNode;
         }
+        System.out.print("Node not in the tree. Null returned.");
         return null;
     }
     
@@ -58,9 +62,53 @@ public class BinaryTree {
         }    
     }
 
-    public void delete(int valueToDelete, BinaryNode node) { //Recursion
-        if (valueToDelete == node.getValue()){
-            
+    public void delete(int valueToDelete, BinaryNode node) {  //Part 1: Check if tree is empty
+        if (root == null){
+            System.out.print("Tree is empty.");
         }
+        else {
+            root = del(valueToDelete, root);
+        }
+    }
+    
+    public BinaryNode del(int valueToDelete, BinaryNode currentNode){ //Part 2: Recursively find node to delete.
+        //Recursively traverses left/right subtree if the deletion value is less/greater than the currentNode's value
+        if (valueToDelete < currentNode.getValue()){
+            currentNode.setLeft(del(valueToDelete, currentNode.getLeft()));
+        }
+        else if (valueToDelete > currentNode.getValue()){
+            currentNode.setRight(del(valueToDelete, currentNode.getRight()));
+        }
+        //Statement runs if currentNode's value is equal to the deletion value
+        else {
+            if (currentNode.getLeft() == null && currentNode.getRight() == null){ //If node has no children
+                return null;
+            }
+            //If node has one child.
+            else if (currentNode.getLeft() == null){
+                return currentNode.getRight();
+            }
+            else if (currentNode.getRight() == null){
+                return currentNode.getLeft();
+            }
+            //If currentNode has 2 children
+            else {
+                //ToDo
+            }
+        }
+        return currentNode;
+    }
+    
+    public void printInOrder(){
+        print(root);
+    }
+    
+    private void print(BinaryNode node){         
+        if (node == null){
+            return;
+        }
+        print(node.getLeft());
+        System.out.print(node.getValue() + " ");
+        print(node.getRight());
     }
 }

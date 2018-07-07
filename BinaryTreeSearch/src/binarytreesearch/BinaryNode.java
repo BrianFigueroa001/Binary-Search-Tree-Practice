@@ -4,7 +4,11 @@ public class BinaryNode {
     private int value;
     private BinaryNode left;
     private BinaryNode right;
-
+    
+    public BinaryNode(int value){
+        this.value = value;
+    }
+    
     public int getValue() {
         return value;
     }
