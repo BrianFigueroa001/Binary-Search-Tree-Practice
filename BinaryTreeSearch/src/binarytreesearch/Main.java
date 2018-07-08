@@ -70,7 +70,14 @@ public class main {
           bt.setRoot(node7);
           bt.printInOrder();
           
-          bt.delete(12);
+//          bt.delete(12);
+//          System.out.print("\n");
+//          bt.printInOrder();
+//          
+     
+          bt.insert(14, bt.getRoot());
+          bt.insert(11, bt.getRoot());
+          bt.insert(16, bt.getRoot());
           System.out.print("\n");
           bt.printInOrder();
           

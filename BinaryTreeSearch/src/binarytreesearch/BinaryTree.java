@@ -37,7 +37,8 @@ public class BinaryTree {
     
     //ToDo: Check code
     //Remember: Purpose is to put nodeToInsert at "bottom of the tree"
-    public void insert(BinaryNode nodeToInsert, BinaryNode node){
+    public void insert(int valueToInsert, BinaryNode node){
+        BinaryNode nodeToInsert = new BinaryNode(valueToInsert);
         if (node == null){ //If tree is empty
             node = nodeToInsert;
             return;
@@ -48,7 +49,7 @@ public class BinaryTree {
                 return;
             }
             else {
-                insert(nodeToInsert, node.getLeft());
+                insert(valueToInsert, node.getLeft());
             }
         }
         
@@ -57,7 +58,7 @@ public class BinaryTree {
                 node.setRight(nodeToInsert);
             }
             else {
-                insert(nodeToInsert, node.getRight());
+                insert(valueToInsert, node.getRight());
             }
         }    
     }
@@ -105,8 +106,8 @@ public class BinaryTree {
     private int inOrderSuccessor(BinaryNode node){
         int minimunValue = node.getValue();
         while (node.getLeft() != null){
-            minimunValue = node.getLeft().getValue();
             node = node.getLeft();
+            minimunValue = node.getValue();
         }
         return minimunValue;
     }
