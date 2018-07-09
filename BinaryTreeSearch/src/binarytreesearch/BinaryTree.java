@@ -4,9 +4,6 @@ public class BinaryTree {
 
     private BinaryNode root;
 
-    public BinaryNode getRoot(){
-        return root;
-    }
     public void setRoot(BinaryNode root) {
         this.root = root;
     }
@@ -37,19 +34,25 @@ public class BinaryTree {
     
     //ToDo: Check code
     //Remember: Purpose is to put nodeToInsert at "bottom of the tree"
-    public void insert(int valueToInsert, BinaryNode node){
-        BinaryNode nodeToInsert = new BinaryNode(valueToInsert);
-        if (node == null){ //If tree is empty
-            node = nodeToInsert;
-            return;
+    public void insert(int valueToInsert){
+        if (root == null){ //Checks if tree is empty
+            root = new BinaryNode(valueToInsert);
         }
+        else {
+            ins(valueToInsert, root);
+        }
+    }
+    
+    private void ins(int valueToInsert, BinaryNode node){
+        BinaryNode nodeToInsert = new BinaryNode(valueToInsert);
+        
         if (nodeToInsert.getValue() < node.getValue()){
             if (node.getLeft() == null){ //base case
                 node.setLeft(nodeToInsert);
                 return;
             }
             else {
-                insert(valueToInsert, node.getLeft());
+                ins(valueToInsert, node.getLeft());
             }
         }
         
@@ -58,7 +61,7 @@ public class BinaryTree {
                 node.setRight(nodeToInsert);
             }
             else {
-                insert(valueToInsert, node.getRight());
+                ins(valueToInsert, node.getRight());
             }
         }    
     }
