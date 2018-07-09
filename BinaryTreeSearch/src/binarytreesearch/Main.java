@@ -4,7 +4,7 @@ public class main {
     //Binary Tree 1
 
     public static void main(String[] args) {
-        BinaryTree bt = new BinaryTree();
+        BinarySearchTree bt = new BinarySearchTree();
 
 // Tree 1:
 //        BinaryNode node8 = new BinaryNode(8);
