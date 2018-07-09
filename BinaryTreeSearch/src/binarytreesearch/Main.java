@@ -29,7 +29,7 @@ public class main {
 //        bt.printInOrder();
 //        
 //        BinaryNode node15 = new BinaryNode(15);
-//        bt.insert(node15, bt.getRoot());
+//        bt.ins(node15, bt.getRoot());
 //        System.out.print("\n");
 //        bt.printInOrder();
 //        bt.delete(15);
@@ -75,9 +75,9 @@ public class main {
 //          bt.printInOrder();
 //          
      
-          bt.insert(14, bt.getRoot());
-          bt.insert(11, bt.getRoot());
-          bt.insert(16, bt.getRoot());
+          bt.insert(14);
+          bt.insert(11);
+          bt.insert(16);
           System.out.print("\n");
           bt.printInOrder();
           
